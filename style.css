@@ -1,0 +1,231 @@
+/* Importante NÃO USAR !important */
+/* Vamos usar o conceito 'mobile-first' */
+
+* {
+    box-sizing: border-box; /* Para não ficar calculando espaçamentos e margem de elementos */
+
+    /* Para não herdar definições dos browser e fazer 100% do seu jeito */
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: 'Tahoma';
+}
+
+a {
+    /* Para não herdar definições dos browser e fazer 100% do seu jeito */
+    display: flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+    list-style: none;
+    appearance: none;
+}
+
+a:visited, a:active, ul, li {
+    /* Para não herdar definições dos browser e fazer 100% do seu jeito */
+    color: inherit;
+    text-decoration: none;
+    list-style: none;
+    appearance: none;
+}
+
+* > a:focus {
+    /* Tira aquela borda que aparece ao clicar em algum link, definitivamente quem fez isso não mais o que fazer */
+    outline-color: transparent;
+    outline-style: none;
+}
+
+html {
+    width: 100%; /* Preenche todo o espaço da largura página */
+    height: 100vh; /* Preenche todo o espaço da altura da página */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Um elemento por linha por padrão */
+    align-items: center;
+    width: 100%; /* Preenche todo o espaço da largura do elemento pai 'html' */
+    min-height: 100%;/* No mínimo, preenche todo o espaço da altura do elemento pai */
+    overflow-y: auto; /* Permite de forma automática, mostra a rolagem de página */
+    background-color: cadetblue; /* Cor de fundo */
+}
+
+header {
+    position: fixed; /* Para o elemento ficar fixo no topo da página */
+    top: 0; /* Manter colado no topo */
+    left: 0; /* Manter colado a esquerda */
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Preenche a largura toda do elemento pai 'body' */
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    background: #EFEFEF;
+}
+
+header > .content {
+    display: flex;
+    width: 100%;
+    max-width: 1920px; /* Mantém o limite do Full HD por padrão nos casos de Ultrawide */
+    height: 100%;
+    justify-content: space-between; /* Coloca espaçamento por igual no(s) elemento(s) filho > Flex Direction = Row executa na horizontal */
+    align-items: center;
+}
+
+header .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 100%;
+    transition: ease-in 0.2s;
+}
+
+header .profile:hover > #profile-photo {
+    box-shadow: 0px 0px 10px #555555;
+}
+
+header .profile > #profile-photo {
+    width: 60px;
+    height: 60px;
+    margin: 0px 10px;
+    background: url('https://avatars.githubusercontent.com/u/89999682?v=4') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+header nav {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+header nav > button {
+    display: none;
+}
+
+header nav > ul {
+    display: flex;
+    align-items: center;
+}
+
+header nav > ul > li {
+    padding: 16px 20px;
+    color: #222222;
+}
+
+header nav > ul > li:hover {
+    color: #EFEFEF;
+    background: cadetblue;
+}
+
+header nav > ul > li > a > i.fa {
+    font-size: 26px;
+}
+
+header nav > ul > li > a > span {
+    padding: 0 0 0 16px;
+    font-size: 16px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1920px;
+    padding-top: 80px;
+}
+
+main > section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+main > section .blank-space {
+    flex: 1 1 50%;
+    display: flex;
+    height: 100%;
+    background: rgba(128, 0, 128, 0.767);
+}
+
+main > section > .wrapper {
+    display: flex;
+    justify-content: stretch;
+    width: 100%;
+    height: 100%;
+}
+
+#banner {
+    min-height: 500px;
+    background: url('/images/bg4.gif') no-repeat center center;
+    background-size: cover;
+}
+
+#welcome {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 5%;
+}
+
+#welcome > div {
+    width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+
+    header nav {
+        display: block;
+        width: 80px;
+    }
+
+    header nav > button {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #222222;
+        font-size: 22px;
+    }
+
+    header nav:hover > button {
+        color: #EFEFEF;
+        background: #222222;
+    }
+    
+    header nav > ul {
+        display: none;
+    }
+    
+    header nav:hover > ul {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        background: #222222;
+        z-index: 999999;
+    }
+
+    header nav > ul > li {
+        width: 100%;
+        padding: 16px 20px;
+        color: #EFEFEF;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    main > section .blank-space {
+        display: none;
+    }
+}
